@@ -15,8 +15,8 @@ export_file_name = 'export.pkl'
 classes = ['burned', 'normal']
 path = Path(__file__).parent
 
-export_file_url_utility = 'https://drive.google.com/uc?export=download&id=1-6mdUK2fkpQ72zzbAJavTfR5QgpDK3oP'
-export_file_name_utility = 'testing.pkl'
+export_file_url_utility = 'https://drive.google.com/uc?export=download&id=1-Sh_yMHAfwQd-OQ1-R1wl-iQAGuE3GQF'
+export_file_name_utility = 'final.pkl'
 
 classes_utility = ['pole', 'no_pole']
 path_utility = Path(__file__).parent
