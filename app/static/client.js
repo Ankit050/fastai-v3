@@ -9,7 +9,7 @@ function showPicked(input) {
   var reader = new FileReader();
   reader.onload = function(e) {
     el("image-picked").src = e.target.result;
-    el("image-picked").className = "";
+    el("image-picked").className = "img-fluid img-thumbnail";
     if(el("results")) el("results").innerHTML = '';
     if(el("results_utilities")) el("results_utilities").innerHTML = '';
   };
