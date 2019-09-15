@@ -32,11 +32,11 @@ function analyze() {
       var response = JSON.parse(e.target.responseText);
       result_text = "";
       if(`${response["result"]}`=="burned") {
-        result_text = "contains a burned house";
+        result_text = "The uploaded image contains a burned house";
       } else {
-        result_text = "is normal"
+        result_text = "No burned houses were found in the uploaded image"
       }
-      el("results").innerHTML = '<div class="result-label alert alert-info" role="alert"><div id="result-label" class="para-style-1"> The uploaded image <b>'+result_text+'</b></div></div>'
+      el("results").innerHTML = '<div class="result-label alert alert-info" role="alert"><div id="result-label" class="para-style-1">'+result_text+'</div></div>'
     }
     el("analyze-button").innerHTML = "Analyze";
   };
