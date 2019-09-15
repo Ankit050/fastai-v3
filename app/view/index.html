@@ -1,40 +1,77 @@
-<html lang='en'>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta charset='utf-8'>
-  <link rel='stylesheet' href='../static/style.css'>
-  <script src='../static/client.js'></script>
+  <meta charset="UTF-8">
+  <meta name="description" content="Turning aerial imagery to actionable insights">
+  <meta name="keywords" content="drones,machine learning,artificial intelligence,aerial,imagery,photogrammetry,vision,image recognition,analysis,data">
+  <meta name="author" content="Chintan Vyas">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeyondVision.ai</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
+  <script type="text/javascript" src="../static/jquery.min.js"></script>
+  <script type="text/javascript" src="../static/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../static/client.js"></script>
 </head>
-<body>
-<div>
-  <div class='center'>
-    <div class='title'>Classify Burned House Images 🐻</div>
-    <p>
- Use images of <strong>burned</strong> houses or normal ones!
-    </p>
-    <div class='content'>
-      <div class='no-display'>
-        <input id='file-input'
-               class='no-display'
-               type='file'
-               name='file'
-               accept='image/*'
-               onchange='showPicked(this)'>
+
+<body class="flex-container d-flex flex-column h-100">
+  <!-- Need to have flex enabled both on body and on the root angular element to make it work -->
+  <div class="navbar-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="https://beyondvision.ai">
+        <img src="../static/images/beyondvisionlogo_v2.png" class="header-logo d-inline-block align-top" alt="">
+        BeyondVision.ai
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active">Demo <span class="sr-only">(current)</span></a>
+        </div>
+        <ul class="nav navbar-nav ml-auto">
+          <li><a class="nav-item nav-link contact-icon" href="mailto:contact@beyondvision.ai"><img src="../static/images/icons8-send-email-24.png"
+                class="mr-2" style="width:20px;margin-bottom:2px;" /><b>Contact</b>@beyondvision.ai</a></li>
+          <!-- <li> <a class="nav-item nav-link py-0" href="https://linkedin.com/beyondvision-ai"><img src="../assets/images/linkedin_icon.png" style="height:20px;"></a></li> -->
+        </ul>
       </div>
-      <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
-      <div class='upload-label'>
-        <label id='upload-label'>No file chosen</label>
-      </div>
-      <div>
-        <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
-      </div>
-      <div class='analyze'>
-        <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
-      </div>
-      <div class='result-label'>
-        <label id='result-label'></label>
+    </nav>
+  </div>
+
+  <div class="d-flex" style="flex:1">
+    <div class="p-3 pt-5 d-flex flex-row justify-content-center align-items-center align-content-center" style="flex:1">
+      <!-- Flex property doesn't work on router outlet so not mentioning here -->
+      <div class="content text-center" style="flex:1">
+        <h1 class="mb-3">Classify Burned House Images</h1>
+        <p class="para-style-1" style="margin-bottom: 1em">
+          Use images of <strong>burned</strong> houses or normal ones!
+        </p>
+        <div class='no-display'>
+          <input id='file-input' class='no-display' type='file' name='file' accept='image/*' onchange='showPicked(this)'>
+        </div>
+        <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
+        <div class='upload-label'>
+          <label id='upload-label'>No file chosen</label>
+        </div>
+        <div>
+          <img id='image-picked' class='no-display' alt='Chosen Image' style="width:450px">
+        </div>
+        <div class='analyze'>
+          <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
+        </div>
+        <div id="results" class="results">
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <footer class="footer mt-auto text-center">
+    <p class="my-0 p-2 text-secondary">&copy; <a href="https://beyondvision.ai">BeyondVision.ai</a> 2019</p>
+  </footer>
 </body>
+
 </html>

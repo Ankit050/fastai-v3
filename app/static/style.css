@@ -1,31 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
 body {
-    background-color: #fff;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #e4e8f9;
+    background: url("../static/images/foggy_birds.png");
+}
+
+.bg-dark {
+    background-color: #44529a !important;
+}
+.header-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.navbar {
+    max-width: 62em;
+    margin: auto;
+}
+.navbar-wrapper {
+    height: auto;
+    width: 100%;
+    background: #44529a;
+}
+
+.contact-icon img { 
+    opacity: 0.5;
+}
+.contact-icon:hover img {
+        opacity: 0.75;
+}
+
+.para-style-1 {
+    font-family: "Raleway", sans-serif;
+    color: #424242;
+    letter-spacing: 0.2px;
+    font-size: 18px;
 }
 
 .no-display {
     display: none;
 }
 
-.center {
-    margin: auto;
-    padding: 10px 50px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.title {
-    font-size: 30px;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    color: #262626;
-}
-
 .content {
-    margin-top: 10em;
+    background: #ffffffc7;
+    padding: 30px;
+    max-width: 62em;
 }
 
 .analyze {
-    margin-top: 5em;
+    margin-top: 2em;
 }
 
 .upload-label {
@@ -34,7 +68,7 @@ body {
 }
 
 .result-label {
-    margin-top: 0.5em;
+    margin-top: 2em;
     padding: 10px;
     font-size: 13px;
 }
@@ -44,17 +78,17 @@ button.choose-file-button {
     height: 40px;
     border-radius: 2px;
     background-color: #ffffff;
-    border: solid 1px #7052CB;
+    border: solid 1px #44529a;
     font-size: 13px;
-    color: #7052CB;
+    color: #44529a;
 }
 
 button.analyze-button {
     width: 200px;
     height: 40px;
-    border: solid 1px #7052CB;
+    border: solid 1px #44529a;
     border-radius: 2px;
-    background-color: #7052CB;
+    background-color: #44529a;
     font-size: 13px;
     color: #ffffff;
 }

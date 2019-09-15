@@ -10,6 +10,7 @@ function showPicked(input) {
   reader.onload = function(e) {
     el("image-picked").src = e.target.result;
     el("image-picked").className = "";
+    el("results").innerHTML = '';
   };
   reader.readAsDataURL(input.files[0]);
 }
@@ -29,7 +30,13 @@ function analyze() {
   xhr.onload = function(e) {
     if (this.readyState === 4) {
       var response = JSON.parse(e.target.responseText);
-      el("result-label").innerHTML = `Result = ${response["result"]}`;
+      result_text = "";
+      if(`${response["result"]}`=="burned") {
+        result_text = "contains a burned house";
+      } else {
+        result_text = "is normal"
+      }
+      el("results").innerHTML = '<div class="result-label alert alert-info" role="alert"><div id="result-label" class="para-style-1"> The uploaded image <b>'+result_text+'</b></div></div>'
     }
     el("analyze-button").innerHTML = "Analyze";
   };
