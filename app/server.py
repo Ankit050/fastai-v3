@@ -6,7 +6,7 @@ from fastai.vision import *
 from io import BytesIO
 from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
-from starlette.responses import HTMLResponse, JSONResponse
+from starlette.responses import HTMLResponse, JSONResponse, RedirectResponse
 from starlette.staticfiles import StaticFiles
 
 export_file_url = 'https://drive.google.com/uc?export=download&id=1Wl1-6MBKRJ7WzXaoY9-_4hROflrFO0so'
@@ -15,8 +15,8 @@ export_file_name = 'export.pkl'
 classes = ['burned', 'normal']
 path = Path(__file__).parent
 
-export_file_url_utility = 'https://drive.google.com/uc?export=download&id=1-6mdUK2fkpQ72zzbAJavTfR5QgpDK3oP'
-export_file_name_utility = 'testing.pkl'
+export_file_url_utility = 'https://drive.google.com/uc?export=download&id=1-Sh_yMHAfwQd-OQ1-R1wl-iQAGuE3GQF'
+export_file_name_utility = 'final.pkl'
 
 classes_utility = ['pole', 'no_pole']
 path_utility = Path(__file__).parent
@@ -70,10 +70,14 @@ loop.close()
 
 @app.route('/')
 async def homepage(request):
+    return RedirectResponse(url='/wildfires/prevention')
+
+@app.route('/wildfires/rehabilitation')
+async def rehabilitation(request):
     html_file = path / 'view' / 'index.html'
     return HTMLResponse(html_file.open().read())
 
-@app.route('/utilities')
+@app.route('/wildfires/prevention')
 async def utility_page(request):
     html_file = path / 'view' / 'utilities.html'
     return HTMLResponse(html_file.open().read())

@@ -30,9 +30,9 @@
   <!-- Need to have flex enabled both on body and on the root angular element to make it work -->
   <div class="navbar-wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="https://beyondvision.ai">
+      <a class="navbar-brand" href="/">
         <img src="../static/images/beyondvisionlogo_v2.png" class="header-logo d-inline-block align-top" alt="">
-        BeyondVision.ai
+        BeyondVision.ai <span class="category"> | WILDFIRES</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,8 +40,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/">Burned Homes Demo <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/utilities"> Utility Poles Demo</a>
+          <a class="nav-item nav-link" href="https://beyondvision.ai"> Home</a>
+          <a class="nav-item nav-link" href="/wildfires/prevention"> Prevention </a>
+          <a class="nav-item nav-link active" href="/wildfires/rehabilitation"> Rehabilitation<span class="sr-only">(current)</span></a>
         </div>
         <ul class="nav navbar-nav ml-auto">
           <li><a class="nav-item nav-link contact-icon" href="mailto:contact@beyondvision.ai"><img src="../static/images/icons8-send-email-24.png"
@@ -56,14 +57,14 @@
     <div class="p-3 pt-5 d-flex flex-row justify-content-center align-items-center align-content-center" style="flex:1">
       <!-- Flex property doesn't work on router outlet so not mentioning here -->
       <div class="content text-center" style="flex:1">
-        <h1 class="mb-3">Classify Burned House Images</h1>
+        <h1 class="mb-3">Rehabilitation after a wildfire</h1>
         <p class="para-style-1" style="margin-bottom: 1em">
-          Use images of <strong>burned</strong> houses or normal ones!
+          Drones are increasingly being flown over wildfire affected areas in California to assist in rehabilitation efforts and identify whether or not it is safe for people to return to their homes. In most cases however, this identification is a largely manual process with human operators going through a large number of images and making judgement calls. Considering how important time is as a factor in rescue and rehabiliation operations, we have created a system that can identify burned homes and along with location information coorelated with the image, help first responders in their tasks. This speeds up the operation and allows for valuable human resources to be reassigned to the rehabilitation tasks.
         </p>
         <div class='no-display'>
           <input id='file-input' class='no-display' type='file' name='file' accept='image/*' onchange='showPicked(this)'>
         </div>
-        <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
+        <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image <small>(jpg, jpeg, png)</small></button>
         <div class='upload-label'>
           <label id='upload-label'>No file chosen</label>
         </div>
