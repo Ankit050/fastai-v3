@@ -14,6 +14,16 @@
   <script type="text/javascript" src="../static/jquery.min.js"></script>
   <script type="text/javascript" src="../static/bootstrap.min.js"></script>
   <script type="text/javascript" src="../static/client.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148042620-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148042620-1');
+  </script>
+
 </head>
 
 <body class="flex-container d-flex flex-column h-100">
@@ -30,7 +40,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active">Demo <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="/">Burned Homes Demo <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="/utilities"> Utility Poles Demo</a>
         </div>
         <ul class="nav navbar-nav ml-auto">
           <li><a class="nav-item nav-link contact-icon" href="mailto:contact@beyondvision.ai"><img src="../static/images/icons8-send-email-24.png"

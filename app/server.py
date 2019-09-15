@@ -15,6 +15,13 @@ export_file_name = 'export.pkl'
 classes = ['burned', 'normal']
 path = Path(__file__).parent
 
+export_file_url_utility = 'https://drive.google.com/uc?export=download&id=1-6mdUK2fkpQ72zzbAJavTfR5QgpDK3oP'
+export_file_name_utility = 'testing.pkl'
+
+classes_utility = ['pole', 'no_pole']
+path_utility = Path(__file__).parent
+
+
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
@@ -42,18 +49,34 @@ async def setup_learner():
         else:
             raise
 
+async def setup_learner_utility():
+    await download_file(export_file_url_utility, path / export_file_name_utility)
+    try:
+        learn_utility = load_learner(path, export_file_name_utility)
+        return learn_utility
+    except RuntimeError as e:
+        if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
+            print(e)
+            message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
+            raise RuntimeError(message)
+        else:
+            raise
 
 loop = asyncio.get_event_loop()
-tasks = [asyncio.ensure_future(setup_learner())]
+tasks = [asyncio.ensure_future(setup_learner()),asyncio.ensure_future(setup_learner_utility())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+learn_utility = loop.run_until_complete(asyncio.gather(*tasks))[1]
 loop.close()
-
 
 @app.route('/')
 async def homepage(request):
     html_file = path / 'view' / 'index.html'
     return HTMLResponse(html_file.open().read())
 
+@app.route('/utilities')
+async def utility_page(request):
+    html_file = path / 'view' / 'utilities.html'
+    return HTMLResponse(html_file.open().read())
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
@@ -63,6 +86,14 @@ async def analyze(request):
     prediction = learn.predict(img)[0]
     return JSONResponse({'result': str(prediction)})
 
+
+@app.route('/analyze_utility', methods=['POST'])
+async def analyze_utility(request):
+    img_data = await request.form()
+    img_bytes = await (img_data['file'].read())
+    img = open_image(BytesIO(img_bytes))
+    prediction = learn_utility.predict(img)[0]
+    return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv:
